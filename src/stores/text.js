@@ -47,31 +47,22 @@ export const useTextStore = defineStore('text', () => {
 
   function countText(text) {
     let statistics = {
-      sTotal: 0, // symbols
-      cTotal: 0, // Chinese characters
-      lTotal: 0, // latin letter
-      nTotal: 0  // number
+      characterCount: 0, // Chinese characters
+      wordCount: 0, // word count for languages like English
     }
 
     for (let i = 0; i < text.length; i++) {
       var c = text.charAt(i);
 
       if (c.match(/[\u4e00-\u9fa5]/)) {
-        statistics.cTotal++;
+        statistics.characterCount++;
       }
       else if (c.match(/[\u9FA6-\u9fcb]/)){
-        statistics.cTotal++;
-      }
-      if (c.match(/[^\x00-\xff]/)) {
-        statistics.sTotal++;
-      }
-      else {
-        statistics.lTotal++;
-      }
-      if (c.match(/[0-9]/)) {
-        statistics.nTotal++;
+        statistics.characterCount++;
       }
     }
+
+    statistics.wordCount = text.split(' ').length
 
     return statistics
   }

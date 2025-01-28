@@ -53,7 +53,9 @@ const currentText = computed(() => textStore.getText(textSelection.lang, textSel
       </div>
 
       <div id="wpm-result" class="text-center">
-        WPM: {{ currentText.stats.cTotal / timerStore.secondCount * 60}}
+        WPM: {{ Math.floor((
+          textSelection.lang=="简体中文" ? currentText.stats.characterCount : currentText.stats.wordCount
+        ) / timerStore.secondCount * 60) }}
       </div>
     </section>
 
