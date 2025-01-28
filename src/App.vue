@@ -32,6 +32,10 @@ const currentText = ref(textStore.getText("简体中文","formal"))
         <button id="timer-button" class="bg-slate-700 rounded-full w-[2rem] h-[2rem] cursor-pointer transition-all"
           @click="timerStore.toggle()">⏲</button>
       </div>
+
+      <div id="wpm-result" class="text-center">
+        WPM: {{ currentText.stats.cTotal / timerStore.secondCount * 60}}
+      </div>
     </section>
 
   </div>
