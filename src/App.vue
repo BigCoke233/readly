@@ -52,7 +52,7 @@ const currentText = computed(() => textStore.getText(textSelection.lang, textSel
           @click="timerStore.toggle()">⏲</button>
       </div>
 
-      <div id="wpm-result" class="text-center">
+      <div v-if="timerStore.secondCount!==0" id="wpm-result" class="text-center">
         WPM: {{ Math.floor((
           textSelection.lang=="简体中文" ? currentText.stats.characterCount : currentText.stats.wordCount
         ) / timerStore.secondCount * 60) }}
