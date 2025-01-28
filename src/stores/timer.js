@@ -42,5 +42,11 @@ export const useTimerStore = defineStore('timer', () => {
     }
   }
 
-  return { timer, secondCount, start, stop, toggle }
+  function reset() {
+    stop()
+    secondCount.value = 0
+    intervalId.value = null
+  }
+
+  return { timer, secondCount, start, stop, toggle, reset }
 })

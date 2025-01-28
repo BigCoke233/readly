@@ -25,7 +25,7 @@ const currentText = ref(textStore.getText("简体中文","formal"))
 
       <div id="action-area" class="flex justify-center items-center gap-5">
         <button id="reset-button" class="bg-slate-100 rounded-full w-[2rem] h-[2rem] cursor-pointer transition-all"
-        >🔄</button>
+          @click="timerStore.reset()">🔄</button>
         <div id="timer-display" class="bg-slate-100 text-xl font-mono py-2 px-4 border border-slate-300 rounded">
           {{ timerStore.timer }}
         </div>
