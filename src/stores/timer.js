@@ -22,6 +22,7 @@ export const useTimerStore = defineStore('timer', () => {
         increment()
       }, 1000) // Increment every second
     }
+    document.getElementById("timer-button").classList.add("rotate-180")
   }
 
   function stop() {
@@ -29,16 +30,14 @@ export const useTimerStore = defineStore('timer', () => {
       clearInterval(intervalId.value) // Clear the interval
       intervalId.value = null // Reset the interval ID
     }
+    document.getElementById("timer-button").classList.remove("rotate-180")
   }
 
   function toggle() {
-    const button = document.getElementById("timer-button")
     if (intervalId.value) {
       stop()
-      button.classList.remove("rotate-180")
     } else {
       start()
-      button.classList.add("rotate-180")
     }
   }
 
