@@ -8,7 +8,8 @@ const textStore = useTextStore();
 
 const textSelection = reactive({
   lang: "简体中文",
-  style: "professional"
+  style: "professional",
+  font: "sans"
 })
 const currentText = computed(() => textStore.getText(textSelection.lang, textSelection.style))
 </script>
@@ -36,9 +37,15 @@ const currentText = computed(() => textStore.getText(textSelection.lang, textSel
             {{ item }}
           </option>
         </select>
+        <select id="font-select" v-model="textSelection.font">
+          <option>sans</option>
+          <option class="font-serif">serif</option>
+          <option class="font-mono">mono</option>
+        </select>
       </div>
 
-      <div id="text-area" class="border border-slate-200 p-5 inset-shadow-2xs text-lg">
+      <div id="text-area" class="border border-slate-200 p-5 inset-shadow-2xs text-lg"
+        :class="{ [`font-${textSelection.font}`]: textSelection.font }">
         {{ currentText.text }}
       </div>
 
