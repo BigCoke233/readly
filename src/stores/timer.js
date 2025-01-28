@@ -32,10 +32,13 @@ export const useTimerStore = defineStore('timer', () => {
   }
 
   function toggle() {
+    const button = document.getElementById("timer-button")
     if (intervalId.value) {
       stop()
+      button.classList.remove("rotate-180")
     } else {
       start()
+      button.classList.add("rotate-180")
     }
   }
 

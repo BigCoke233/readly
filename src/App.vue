@@ -16,13 +16,14 @@ const timerStore = useTimerStore(); // Keep the store instance reactive
       <div id="text-area">
 
       </div>
-      <div id="action-area">
-        <div id="timer-display">
+      <div id="action-area" class="flex justify-center items-center gap-5">
+        <button id="reset-button" class="bg-slate-100 rounded-full w-[2rem] h-[2rem] cursor-pointer transition-all"
+        >🔄</button>
+        <div id="timer-display" class="bg-slate-100 text-xl font-mono py-2 px-4 border border-slate-300 rounded">
           {{ timerStore.timer }}
         </div>
-        <div id="timer-button">
-          <button @click="timerStore.toggle()">⏲</button>
-        </div>
+        <button id="timer-button" class="bg-slate-700 rounded-full w-[2rem] h-[2rem] cursor-pointer transition-all"
+          @click="timerStore.toggle()">⏲</button>
       </div>
     </section>
 
