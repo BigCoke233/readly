@@ -15,5 +15,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --global user.name "BigCoke233"
-        git config --global user.email "your-email@example.com"
-        yarn deploy # Assuming you have a deploy script in package.json
+        git config --global user.email "hi@guhub.cn"
+        yarn deploy
