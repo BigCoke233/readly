@@ -1,12 +1,16 @@
 <script setup>
-import { ref } from 'vue';
+import { reactive, computed } from 'vue';
 import { useTimerStore } from './stores/timer'
 import { useTextStore } from './stores/text'
 
 const timerStore = useTimerStore();
 const textStore = useTextStore();
 
-const currentText = ref(textStore.getText("简体中文","formal"))
+const textSelection = reactive({
+  lang: "简体中文",
+  style: "professional"
+})
+const currentText = computed(() => textStore.getText(textSelection.lang, textSelection.style))
 </script>
 
 <template>
@@ -18,6 +22,21 @@ const currentText = ref(textStore.getText("简体中文","formal"))
     </header>
 
     <section class="flex flex-col gap-5">
+
+      <div id="text-select">
+        <select id="language-select" v-model="textSelection.lang">
+          <option v-for="(item, index) in textStore.categories.lang"
+            :key="index">
+            {{ item }}
+          </option>
+        </select>
+        <select id="style-select" v-model="textSelection.style">
+          <option v-for="(item, index) in textStore.categories.style"
+            :key="index">
+            {{ item }}
+          </option>
+        </select>
+      </div>
 
       <div id="text-area" class="border border-slate-200 p-5 inset-shadow-2xs text-lg">
         {{ currentText.text }}

@@ -2,6 +2,10 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useTextStore = defineStore('text', () => {
+  const categories = {
+    lang: ["简体中文", "English"],
+    style: ["casual","formal","literary","professional"],
+  }
   const texts = {
     "简体中文": {
       "casual": [
@@ -81,5 +85,5 @@ export const useTextStore = defineStore('text', () => {
     }
   }
 
-  return { texts, getText }
+  return { texts, getText, categories }
 })
